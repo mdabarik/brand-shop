@@ -5,11 +5,16 @@ import { LuSunMoon } from "react-icons/lu";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import "./Navbar.css";
 import { AiOutlineMenuUnfold } from "react-icons/ai";
+import { useContext } from "react";
+import { GlobalContext } from "../../providers/Provider";
 
 const Navbar = () => {
-    
+
+    const context = useContext(GlobalContext);
+    const { theme, handleTheme } = context;
+
     const handleThemeChange = () => {
-        console.log('clicked');
+        handleTheme()
     }
 
     const links = <>
@@ -48,8 +53,12 @@ const Navbar = () => {
             </div>
             <div className="navbar-end">
                 <button className="flex" onClick={handleThemeChange}>
-                    <BsFillMoonStarsFill className="text-2xl"></BsFillMoonStarsFill>
-                    <LuSunMoon className="text-2xl ml-2"></LuSunMoon>
+                    {
+                        theme == "dark"
+                            ? <BsFillMoonStarsFill className="text-2xl"></BsFillMoonStarsFill>
+                            : <LuSunMoon className="text-2xl ml-2"></LuSunMoon>
+                    }
+
                 </button>
                 <a className="btn">Login</a>
                 <NavLink to="/cart">

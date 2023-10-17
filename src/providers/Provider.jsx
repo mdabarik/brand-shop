@@ -3,8 +3,8 @@ import { createContext, useEffect, useState } from "react";
 export const GlobalContext = createContext(null);
 
 const Provider = ({children}) => {
-
-    const [theme, setTheme] = useState("light");
+    const currThm = localStorage.getItem("theme") || "light";
+    const [theme, setTheme] = useState(currThm);
 
     const handleTheme = () => {
         const root = document.documentElement.classList;
@@ -20,7 +20,7 @@ const Provider = ({children}) => {
     }
 
     useEffect(() => {
-        console.log(theme);
+        document.documentElement.classList = theme;
     }, [theme])
 
     const information = {
