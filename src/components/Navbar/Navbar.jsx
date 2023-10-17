@@ -7,6 +7,10 @@ import "./Navbar.css";
 import { AiOutlineMenuUnfold } from "react-icons/ai";
 
 const Navbar = () => {
+    
+    const handleThemeChange = () => {
+        console.log('clicked');
+    }
 
     const links = <>
         <li>
@@ -43,7 +47,7 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <button className="flex">
+                <button className="flex" onClick={handleThemeChange}>
                     <BsFillMoonStarsFill className="text-2xl"></BsFillMoonStarsFill>
                     <LuSunMoon className="text-2xl ml-2"></LuSunMoon>
                 </button>

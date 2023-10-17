@@ -1,3 +1,4 @@
+// localStorage.setItem("theme", "light");
 export const currTheme = localStorage.getItem("theme");
 
 const themeSwitch = () => {
