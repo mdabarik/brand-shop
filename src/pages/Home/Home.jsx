@@ -2,6 +2,7 @@ import { useLoaderData } from "react-router-dom";
 import Banner from "../../components/Banner/Banner";
 import { useState } from "react";
 import Brand from "../../components/Brand/Brand";
+import Popular from "../../components/Popular/Popular";
 
 const Home = () => {
 
@@ -19,6 +20,9 @@ const Home = () => {
                         brands?.map(brand => <Brand key={brand._id} brand={brand} ></Brand>)
                     }
                 </div>
+            </div>
+            <div>
+                <Popular></Popular>
             </div>
         </div>
     );

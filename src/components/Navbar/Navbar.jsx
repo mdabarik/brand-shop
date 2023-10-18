@@ -22,7 +22,7 @@ const Navbar = () => {
             <NavLink to="/">Home</NavLink>
         </li>
         <li>
-            <NavLink to="/cart">My Cart</NavLink>
+            <NavLink to="/add-product">Add Product</NavLink>
         </li>
     </>
 
