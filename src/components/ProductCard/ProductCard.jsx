@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 const ProductCard = ({product}) => {
     return (
@@ -13,8 +14,8 @@ const ProductCard = ({product}) => {
                 <p>{product.shortDesc}</p>
                 <p>Price: ${product.price}</p>
                 <div>
-                    <button>View</button>
-                    <button>Edit</button>
+                    <Link to={`/product/${product._id}`}>View</Link>
+                    <Link to={`/edit/${product._id}`}>Edit</Link>
                 </div>
             </div>
         </div>

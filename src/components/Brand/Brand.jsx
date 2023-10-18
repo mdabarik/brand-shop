@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import ProductCard from "../ProductCard/ProductCard";
 
 const Brand = () => {
-
     const { brand } = useParams();
     const allProduct = useLoaderData();
     const [products, setProducts] = useState([]);

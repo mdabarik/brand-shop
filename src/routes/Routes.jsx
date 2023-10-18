@@ -4,6 +4,9 @@ import Error from "../pages/Error/Error";
 import Home from "../pages/Home/Home";
 import AddProduct from "../components/AddProduct/AddProduct";
 import Brand from "../components/Brand/Brand";
+import ProductDetails from "../components/ProductDetails/ProductDetails";
+import EditProduct from "../components/EditProduct.jsx/EditProduct";
+import Cart from "../components/Cart/Cart";
 
 const routes = createBrowserRouter([
     {
@@ -18,7 +21,7 @@ const routes = createBrowserRouter([
             },
             {
                 path: '/cart',
-                element: <h1>Cart</h1>
+                element: <Cart></Cart>
             },
             {
                 path: '/add-product',
@@ -29,6 +32,15 @@ const routes = createBrowserRouter([
                 path: '/brand/:brand',
                 element: <Brand></Brand>,
                 loader: () => fetch("http://localhost:5901/products")
+            },
+            {
+                path: '/product/:id',
+                element: <ProductDetails></ProductDetails>
+            },
+            {
+                path: '/edit/:id',
+                element: <EditProduct></EditProduct>,
+                loader: () => fetch("http://localhost:5901/brands")
             }
         ]
     }
