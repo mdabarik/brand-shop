@@ -11,7 +11,8 @@ const routes = createBrowserRouter([
         children: [
             {
                 path: '/',
-                element: <Home></Home>
+                element: <Home></Home>,
+                loader: () => fetch("http://localhost:5901/brands")
             },
             {
                 path: '/cart',

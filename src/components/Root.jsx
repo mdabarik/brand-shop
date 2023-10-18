@@ -11,13 +11,13 @@ const Root = () => {
 
     return (
         <div>
-            <div className={`text-black bg-base-300 ${theme=="dark"?"dark:text-white dark:bg-[#222]":""}`}>
+            <div className={`text-black bg-base-200 ${theme=="dark"?"dark:text-white dark:bg-[#222]":""}`}>
                 <Navbar></Navbar>
             </div>
-            <div className="bg-[#f5f5f5] text-[#333333] dark:bg-[#373636] dark:text-[#fff]">
+            <div className="bg-[#fff] text-[#333333] dark:bg-[#373636] dark:text-[#fff]">
                 <Outlet></Outlet>
             </div>
-            <div className='bg-base-300 text-black dark:text-white dark:bg-[#222]'>
+            <div className='bg-base-200 text-black dark:text-white dark:bg-[#222]'>
                 <Footer></Footer>
             </div>
         </div>
