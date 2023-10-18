@@ -1,30 +1,47 @@
 import { Rating, Typography } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const AddProduct = () => {
     const brands = useLoaderData();
     const [value, setValue] = useState(0);
-    const [selected, setSelected] = useState(0);
+    const [selectedBrandName, setSelectedBrandName] = useState(0);
     const [errorMessage, setErrorMessage] = useState("");
+    const [prodTypes, setProdTypes] = useState([]);
+    const [selectedBrandType, setSelectedBrandType] = useState("");
 
-    const handleProductTypeChanage = (e) => {
-        console.log(e.target.value);
-        setSelected(e.target.value);
+    useEffect(() => {
+        fetch("http://localhost:5901/product-types")
+        .then(res => res.json())
+        .then(data => {
+            setProdTypes(data);
+        })
+        .catch(error => {
+            console.log(error);
+        })
+    }, [])
+
+    const handleBrandName = (e) => {
+        setSelectedBrandName(e.target.value);
+    }
+
+    const handleType = e => {
+        setSelectedBrandType(e.target.value);
     }
 
     const handleFormSubmit = (e) => {
         e.preventDefault();
         const form = e.target;
         const productName = form.productName.value;
-        const brandName = form.brandName.value;
+        const brandName = selectedBrandName;
         const price = form.price.value;
-        const brandType = selected;
+        const brandType = selectedBrandType;
         const shortDesc = form.shortDesc.value;
         const rating = value;
         const photoURL = form.photoURL.value;
         // console.log(productName, brandName, price, brandType, shortDesc, rating, photoURL);
-        console.log(rating);
+        // console.log(rating);
 
         setErrorMessage("");
         if (rating === 0) {
@@ -32,12 +49,42 @@ const AddProduct = () => {
             console.log("select rating");
             return;
         }
+        if (brandName === "") {
+            setErrorMessage("Please select brand.");
+            return;
+        }
         if (brandType === "") {
             setErrorMessage("Please select brand type.");
             return;
         }
 
-        
+        const product = {
+            productName, brandName, price, brandType, shortDesc, rating, photoURL
+        }
+
+        fetch("http://localhost:5901/newprod", {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(product)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.insertedId) {
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'New product added succesfully.',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
+            })
+            .catch(err => {
+                console.log(err);
+            })
 
     }
 
@@ -55,11 +102,16 @@ const AddProduct = () => {
                     }
                     <div className="form-control">
                         <label htmlFor="prod-name" className="label">Product Name</label>
-                        <input required type="text" name="productName" id="prod-name" placeholder="Product name" className="input input-bordered  dark:text-black" required/>
+                        <input required type="text" name="productName" id="prod-name" placeholder="Product name" className="input input-bordered  dark:text-black" required />
                     </div>
                     <div className="form-control">
-                        <label htmlFor="brand-name" className="label">Brand Name</label>
-                        <input required type="text" name="brandName" id="brand-name" placeholder="Brand name" className="input input-bordered  dark:text-black" />
+                        <label htmlFor="options-brand" className="label">Brand Name</label>
+                        <select defaultValue={setSelectedBrandName} onChange={handleBrandName} className="select select-bordered  dark:text-black" id="options-brand">
+                            <option value="">Select one</option>
+                            {
+                                brands.map(brand => <option value={brand.brandName} key={brand._id}>{brand.brandName}</option>)
+                            }
+                        </select>
                     </div>
                     <div className="form-control">
                         <label htmlFor="price" className="label">Price</label>
@@ -67,17 +119,11 @@ const AddProduct = () => {
                     </div>
                     <div className="form-control">
                         <label htmlFor="options" className="label">Select Product Type</label>
-                        <select defaultValue={selected} onChange={handleProductTypeChanage} className="select select-bordered  dark:text-black" id="options">
+                        <select defaultValue={selectedBrandType} onChange={handleType} className="select select-bordered  dark:text-black" id="options">
                             <option value="">Select one</option>
                             {
-                                brands.map(brand => <option value={brand.brandName} key={brand._id}>{brand.brandName}</option>)
+                                prodTypes.map(prod => <option value={prod.name} key={prod._id}>{prod.name}</option>)
                             }
-                            {/* <option value="0">Select one</option>
-                            <option value="1">Google</option>
-                            <option value="2">MicroSoft</option>
-                            <option value="3">Apple</option>
-                            <option value="4">Intel</option>
-                            <option value="5">Amazon</option> */}
                         </select>
                     </div>
                     <div className="form-control">

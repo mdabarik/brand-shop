@@ -1,11 +1,36 @@
+import { useLoaderData, useParams } from "react-router-dom";
+import BrandSlider from "./BrandSlider";
+import { useEffect, useState } from "react";
+import ProductCard from "../ProductCard/ProductCard";
 
-const Brand = ({ brand }) => {
+const Brand = () => {
+
+    const { brand } = useParams();
+    const allProduct = useLoaderData();
+    const [products, setProducts] = useState([]);
+    useEffect(() => {
+        console.log(allProduct, "useFe", brand);
+        const filtered = allProduct.filter(product => product.brandName == brand);
+        console.log(filtered);
+        setProducts(filtered);
+    }, [])
+
+
     return (
-        <div className='rounded-lg rounded-t-none'>
-            <img className='h-[220px] rounded-t-lg w-full object-cover' src={brand.imageUrl} alt="brand" />
-            <div className="bg-[black] flex justify-around items-center text-white dark:bg-[white] dark:text-black rounded-lg rounded-t-none py-3">
-                <h3 className="text-xl text-center">Brand: {brand.brandName}</h3>
-                <button className="bg-[#92908d77] hover:bg-[#92908d48] rounded-lg py-2 px-4">View All</button>
+        <div>
+            <BrandSlider></BrandSlider>
+            <div>
+                
+                {
+                    products.length == 0 ? <h1 className="text-3xl font-bold text-center py-5">No products available for - {brand}</h1> :
+                        <>
+                        <h2 className="text-3xl text-center py-5">All Products: {brand}</h2>
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 container mx-auto border-2">
+                            {
+                                products.map(product => <ProductCard key={product._id} product={product}></ProductCard>)
+                            }
+                        </div></>
+                }
             </div>
         </div>
     );

@@ -3,6 +3,7 @@ import Root from "../components/Root";
 import Error from "../pages/Error/Error";
 import Home from "../pages/Home/Home";
 import AddProduct from "../components/AddProduct/AddProduct";
+import Brand from "../components/Brand/Brand";
 
 const routes = createBrowserRouter([
     {
@@ -23,6 +24,11 @@ const routes = createBrowserRouter([
                 path: '/add-product',
                 element: <AddProduct></AddProduct>,
                 loader: () => fetch("http://localhost:5901/brands")
+            },
+            {
+                path: '/brand/:brand',
+                element: <Brand></Brand>,
+                loader: () => fetch("http://localhost:5901/products")
             }
         ]
     }

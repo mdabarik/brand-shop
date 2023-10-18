@@ -5,9 +5,7 @@ import { useContext } from 'react';
 import { GlobalContext } from '../providers/Provider';
 
 const Root = () => {
-
     const { theme } = useContext(GlobalContext);
-    console.log("root, ", theme);
 
     return (
         <div>

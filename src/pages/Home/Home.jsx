@@ -1,7 +1,7 @@
 import { useLoaderData } from "react-router-dom";
 import Banner from "../../components/Banner/Banner";
 import { useState } from "react";
-import Brand from "../../components/Brand/Brand";
+import Brand from "../../components/BrandCard/BrandCard";
 import Popular from "../../components/Popular/Popular";
 
 const Home = () => {
