@@ -1,11 +1,27 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useContext, useState } from 'react';
+import { Link, Navigate } from 'react-router-dom';
 import { FcGoogle } from 'react-icons/fc';
+import { GlobalContext } from '../../providers/Provider';
+import Swal from 'sweetalert2';
+import { updateProfile } from 'firebase/auth';
 
+// https://images.unsplash.com/photo-1430990480609-2bf7c02a6b1a?auto=format&fit=crop&q=80&w=2940&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
 
 const Registration = () => {
+    const {
+        user,
+        loading,
+        registerUser,
+        loginNormal,
+        signInWithGoogle,
+        logOut
+    } = useContext(GlobalContext);
 
     const [errorMessage, setErrorMessage] = useState("");
+    if (user != null) {
+        return <Navigate to="/" />
+    }
+
 
     const handleRegistration = (e) => {
         e.preventDefault();
@@ -13,11 +29,77 @@ const Registration = () => {
         const name = form.name.value.trim();
         const email = form.email.value.trim();
         const password = form.password.value.trim();
-        console.log(name, email, password);
+        const photo = form.photo.value.trim();
+        console.log(name, email, password, photo);
+
+        setErrorMessage("");
+        // validation
+        if (password.length < 6) {
+            setErrorMessage("Password must contains 6 or more characters");
+            return;
+        } else if (!/[A-Z]/.test(password)) {
+            setErrorMessage("Password must contains at least 1 capital letter")
+            return;
+        } else if (!/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
+            setErrorMessage("Password must contain at least 1 special character")
+            return;
+        }
+
+        registerUser(email, password)
+            .then(userCredential => {
+                const user = userCredential.user;
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Account Created Successfully.',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+
+                console.log(user);
+
+                updateProfile(user, {
+                    displayName: name,
+                    photoURL: photo,
+                    reloadUserInfo: {
+                        photoUrl: photo
+                    }
+                })
+
+                logOut();
+                loginNormal(email, password)
+                    .then(userCred => {
+                        console.log(userCred.user);
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    })
+            })
+            .catch(error => {
+                if (error.code === "auth/email-already-in-use") {
+                    setErrorMessage("Email already exists");
+                } else {
+                    setErrorMessage(error.code);
+                }
+            })
+
     }
 
     const handleGoogleSignedIn = () => {
-        console.log('google sign in clicked');
+        signInWithGoogle()
+            .then(() => {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Google Sign In Successfull.',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            })
+            .catch(err => {
+                const error = err.code;
+                setErrorMessage(error);
+            })
     }
 
     return (
@@ -26,15 +108,9 @@ const Registration = () => {
                 <h2 className="text-2xl font-semibold">Register now</h2>
                 <p className="text-sm pb-5">Provide details information to create your account</p>
                 <form onSubmit={handleRegistration} className="w-[60%]">
-                    {
-                        errorMessage == "" ? "" :
-                            <div className="alert alert-error flex items-center justify-center">
-                                <span>Error: {errorMessage}</span>
-                            </div>
-                    }
                     <div className="form-control">
-                        <label htmlFor="username" className="label">Name</label>
-                        <input required type="text" name="name" id="username" placeholder="name" className="input input-bordered  dark:text-black" />
+                        <label htmlFor="name" className="label">Name</label>
+                        <input required type="text" name="name" id="name" placeholder="Name" className="input input-bordered  dark:text-black" />
                     </div>
                     <div className="form-control">
                         <label htmlFor="email" className="label">Email</label>
@@ -55,6 +131,12 @@ const Registration = () => {
                         Already have an account? <Link className='underline text-[orange]' to="/login">Login Now</Link>
                     </div>
                 </form>
+                {
+                    errorMessage == "" ? "" :
+                        <div className="alert bg-[#ff00006f] flex items-center justify-center w-[60%]">
+                            <span>{errorMessage}</span>
+                        </div>
+                }
                 <div onClick={handleGoogleSignedIn} className="flex min-w-[280px] hover:cursor-pointer flex-row items-center justify-center rounded-full border-[1px] p-1 px-5 py-2 mt-4 bg-[#9CA3AF95]">
                     <FcGoogle className="text-4xl"></FcGoogle>
                     <span className="ml-3">Sign in with Google</span>

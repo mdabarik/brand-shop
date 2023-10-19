@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import { Rating } from "@mui/material";
+import StarIcon from '@mui/icons-material/Star';
+
 
 
 const ProductCard = ({ product }) => {
@@ -13,11 +15,13 @@ const ProductCard = ({ product }) => {
             </div>
             <div>
                 <h2>{product.productName}</h2>
-                <div>
+                <div className="">
                     <Rating
-                        className="py-2 rounded-lg"
+                        className="py-2 rounded-lg "
                         name="simple-controlled"
                         value={product.rating}
+                        precision={0.5}
+                        emptyIcon={<StarIcon style={{ opacity: 0.55, color: 'grey' }} fontSize="inherit" />}
                         readOnly
                     />
                 </div>

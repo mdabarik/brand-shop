@@ -1,8 +1,12 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Card from "./Card";
 import Swal from "sweetalert2";
+import { GlobalContext } from "../../providers/Provider";
 
 const Cart = () => {
+
+    const { user } = useContext(GlobalContext);
+    const [isLoading, setIsLoading] = useState(true);
 
     const [carts, setCarts] = useState([]);
     useEffect(() => {
@@ -10,10 +14,13 @@ const Cart = () => {
             .then(res => res.json())
             .then(data => {
                 // console.log(data);
-                setCarts(data);
+                const filtered = data.filter(d => d.email == user.email);
+                setCarts(filtered);
+                setIsLoading(false)
             })
             .catch(err => {
                 console.log(err);
+                setIsLoading(false)
             })
     }, []);
 
@@ -61,15 +68,17 @@ const Cart = () => {
     return (
         <div className="container mx-auto flex flex-col items-center justify-center py-10">
             <h2 className="font-bold text-3xl mb-5">Products in Cart</h2>
+            
             {
+                isLoading == false ? 
                 carts.length == 0 ?
-                    <h1 className="text-center alert alert-error">Sorry, not product on cart.</h1>
+                    <h1 className="text-center text-3xl my-5 font-bold text-red-900 bg-[#ffffff61] p-3 px-6 rounded-full">Sorry, not product on cart.</h1>
                     :
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {
                             carts.map(cart => <Card handleDelete={handleDelete} key={cart._id} cart={cart}></Card>)
                         }
-                    </div>
+                    </div> : ""
             }
 
         </div>

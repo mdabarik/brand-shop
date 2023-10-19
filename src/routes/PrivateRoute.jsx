@@ -2,15 +2,21 @@ import { useContext } from "react";
 import { Navigate } from "react-router-dom";
 import { GlobalContext } from "../providers/Provider";
 
-const PrivateRoute = ({children}) => {
+const PrivateRoute = ({ children }) => {
 
-    const { user } = useContext(GlobalContext)
+    const { user, loading } = useContext(GlobalContext)
 
-    if (user == null) {
-        return <Navigate to="/login"></Navigate>
+    if (loading) {
+        return <div className="h-[100vh] w-[100vw] flex justify-center items-center">
+            <span className="loading loading-spinner text-error"></span>
+        </div>;
     }
 
-    return children;
+    if (user) {
+        return children;
+    }
+
+    return <Navigate to="/login"></Navigate>
 };
 
 export default PrivateRoute;

@@ -7,14 +7,21 @@ import "./Navbar.css";
 import { AiOutlineMenuUnfold } from "react-icons/ai";
 import { useContext } from "react";
 import { GlobalContext } from "../../providers/Provider";
+import { AiOutlineLogout } from 'react-icons/ai';
+import { CiLogin } from "react-icons/ci";
 
 const Navbar = () => {
+    const { user, loading, logOut } = useContext(GlobalContext)
 
     const context = useContext(GlobalContext);
     const { theme, handleTheme } = context;
 
     const handleThemeChange = () => {
         handleTheme()
+    }
+
+    const handleLogout = () => {
+        logOut();
     }
 
     const links = <>
@@ -61,9 +68,40 @@ const Navbar = () => {
 
                 </button>
 
-                <Link to="/login" className="bg-[orange] px-6 py-2 text-black font-medium hover:bg-[#cf8f18] rounded-full">
+                {/* <Link to="/login" className="bg-[orange] px-6 py-2 text-black font-medium hover:bg-[#cf8f18] rounded-full">
                    Login
-                </Link>
+                </Link> */}
+                {
+                    loading ?
+                        <span className="loading loading-spinner loading-md"></span>
+                        :
+                        user
+                            ?
+
+                            <div className="flex gap-3 items-center justify-center">
+                                <div className="flex items-center flex-col-reverse md:flex-row gap-2">
+                                    <div>
+                                        <p className="text-[10px] md:text-sm">{user.displayName}</p>
+                                    </div>
+                                    <div className="rounded-full">
+                                        <img className="w-[40px] h-[40px] border-[#f0ebeb8d] border-[1px] object-cover rounded-full" src={user.photoURL} alt="Profile" />
+                                    </div>
+                                </div>
+                                <div onClick={handleLogout} className="">
+                                    <button className="bg-[#db332a] py-2 px-3 flex items-center justify-center rounded-full normal-case text-white border-none hover:bg-[#b5100b] active:bg-[#b5100b]">
+                                        <AiOutlineLogout className="text-xl"></AiOutlineLogout>
+                                        <span className="text-[12px]">Logout</span>
+                                    </button>
+                                </div>
+                            </div>
+
+
+                            :
+                            <Link to="/login" className="px-4 py-2 bg-[#db332a] rounded-full normal-case flex gap-1 text-white border-none hover:bg-[#b5100b]">
+                                <CiLogin className="text-xl"></CiLogin>
+                                <span>Login</span>
+                            </Link>
+                }
 
                 <NavLink to="/cart">
                     <AiOutlineShoppingCart className="text-4xl"></AiOutlineShoppingCart>

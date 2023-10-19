@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Swal from "sweetalert2";
+import { GlobalContext } from "../../providers/Provider";
 
 const ProductDetails = () => {
     const { id } = useParams();
     const [product, setProduct] = useState({});
+    const { user } = useContext(GlobalContext);
 
     useEffect(() => {
         fetch(`http://localhost:5901/products/${id}`)
@@ -19,8 +21,14 @@ const ProductDetails = () => {
     }, []);
 
     const handleAddToCart = () => {
+        const email = user?.email;
+        const info = { id, email }
         fetch(`http://localhost:5901/cart/${id}`, {
-            method: 'PUT'
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(info)
         })
             .then(res => res.json())
             .then(data => {

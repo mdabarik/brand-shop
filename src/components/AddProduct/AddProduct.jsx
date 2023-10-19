@@ -139,6 +139,7 @@ const AddProduct = () => {
                             onChange={(event, newValue) => {
                                 setValue(newValue);
                             }}
+                            precision={0.5}
                         />
                     </div>
                     <div className="form-control">
