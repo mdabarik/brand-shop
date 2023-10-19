@@ -3,6 +3,7 @@ import Banner from "../../components/Banner/Banner";
 import { useState } from "react";
 import Brand from "../../components/BrandCard/BrandCard";
 import Popular from "../../components/Popular/Popular";
+import Team from "../../components/Team/Team";
 
 const Home = () => {
 
@@ -12,6 +13,9 @@ const Home = () => {
     return (
         <div>
             <Banner></Banner>
+            <div>
+                <Popular></Popular>
+            </div>
             <div className="container mx-auto flex flex-col items-center justify-center py-12 space-y-2">
                 <h2 className="text-3xl"> Landscape of Trusted Brands</h2>
                 <p className="text-sm text-center w-[90%]">A Deep Dive into Strategic Branding: Unraveling the Interplay Between Brand Image and Name</p>
@@ -22,7 +26,7 @@ const Home = () => {
                 </div>
             </div>
             <div>
-                <Popular></Popular>
+                <Team></Team>
             </div>
         </div>
     );

@@ -1,0 +1,42 @@
+[
+    {
+        "id": 1,
+        "img": "https://i.ibb.co/zhmtwhH/person1.jpg",
+        "name": "Ella Adams",
+        "profession": "Digital Marketing Specialist",
+        "review": "Working with this team was an exceptional experience. They delivered outstanding results and exceeded our expectations. Highly recommended!",
+        "rating": 3.2
+    },
+    {
+        "id": 2,
+        "img": "https://i.ibb.co/xXBq8mX/person2.jpg",
+        "name": "Liam Parker",
+        "profession": "Software Engineer",
+        "review": "I'm impressed with the quality of their work and their attention to detail. Highly recommended!",
+        "rating": 4.5
+    },
+    {
+        "id": 3,
+        "img": "https://i.ibb.co/c197MMV/person3.jpg",
+        "name": "Ava Turner",
+        "profession": "Graphic Designer",
+        "review": "Their creativity knows no bounds. They brought our vision to life with stunning designs. A pleasure to work with!",
+        "rating": 3
+    },
+    {
+        "id": 4,
+        "img": "https://i.ibb.co/wgvwbjn/person4.jpg",
+        "name": "Oliver Harris",
+        "profession": "Business Strategist",
+        "review": "The team's analytical skills and strategic approach significantly contributed to our project's success. Impressed with their professionalism.",
+        "rating": 4.3
+    },
+    {
+        "id": 5,
+        "img": "https://i.ibb.co/ZzVLKn0/person5.jpg",
+        "name": "Isabella White",
+        "profession": "Sales and Marketing Consultant",
+        "review": "Exceptional service and unmatched dedication. They went above and beyond to meet our requirements. 10/10!",
+        "rating": 4
+    }
+]

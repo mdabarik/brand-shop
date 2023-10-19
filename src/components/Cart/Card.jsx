@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-const Card = ({ cart }) => {
+const Card = ({ cart, handleDelete }) => {
     const [product, setProduct] = useState({});
 
     useEffect(() => {
@@ -30,8 +30,9 @@ const Card = ({ cart }) => {
                     <p className="text-sm">{product.shortDesc}</p>
                 </div>
                 <Link to={`/product/${product._id}`}>
-                    <button className="bg-[orange] w-full rounded-lg px-6 py-2 font-bold hover:bg-[#cf8f18] text-[#403f3f]">View Details</button>
+                    <button className="bg-[orange] btn w-full rounded-lg px-6 py-2 font-bold hover:bg-[#cf8f18] text-[#403f3f]">View Details</button>
                 </Link>
+                <button onClick={() => handleDelete(product._id)} className="btn btn-error">X</button>
             </div>
 
         </div>

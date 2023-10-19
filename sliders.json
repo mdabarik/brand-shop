@@ -1,0 +1,110 @@
+[
+    {
+        "title": "iPhone X",
+        "subtitle": "Latest iPhone Model",
+        "brandName": "Apple",
+        "imageUrl": "https://i.ibb.co/zGFX6Fh/1-apple.jpg"
+    },
+    {
+        "title": "iPad Pro",
+        "subtitle": "Powerful Tablet Device",
+        "brandName": "Apple",
+        "imageUrl": "https://i.ibb.co/zGFX6Fh/1-apple.jpg"
+    },
+    {
+        "title": "MacBook Pro",
+        "subtitle": "High-Performance Laptop",
+        "brandName": "Apple",
+        "imageUrl": "https://i.ibb.co/zGFX6Fh/1-apple.jpg"
+    },
+    {
+        "title": "Galaxy S20",
+        "subtitle": "Flagship Smartphone",
+        "brandName": "Samsung",
+        "imageUrl": "https://i.ibb.co/Q98j5Zr/2-samsung.png"
+    },
+    {
+        "title": "Galaxy Tab S7",
+        "subtitle": "Premium Android Tablet",
+        "brandName": "Samsung",
+        "imageUrl": "https://i.ibb.co/Q98j5Zr/2-samsung.png"
+    },
+    {
+        "title": "Samsung Smart TV",
+        "subtitle": "High-Resolution TV",
+        "brandName": "Samsung",
+        "imageUrl": "https://i.ibb.co/Q98j5Zr/2-samsung.png"
+    },
+    {
+        "title": "PlayStation 5",
+        "subtitle": "Next-Gen Gaming Console",
+        "brandName": "Sony",
+        "imageUrl": "https://i.ibb.co/NZmYkXG/3-sony.jpg"
+    },
+    {
+        "title": "Sony Xperia 1 II",
+        "subtitle": "Premium Android Smartphone",
+        "brandName": "Sony",
+        "imageUrl": "https://i.ibb.co/NZmYkXG/3-sony.jpg"
+    },
+    {
+        "title": "Sony Noise-Canceling Headphones",
+        "subtitle": "High-Quality Audio Device",
+        "brandName": "Sony",
+        "imageUrl": "https://i.ibb.co/NZmYkXG/3-sony.jpg"
+    },
+    {
+        "title": "Pixel 5",
+        "subtitle": "Google's Latest Smartphone",
+        "brandName": "Google",
+        "imageUrl": "https://i.ibb.co/yRzsjHP/4-google.jpg"
+    },
+    {
+        "title": "Google Nest Hub",
+        "subtitle": "Smart Home Assistant",
+        "brandName": "Google",
+        "imageUrl": "https://i.ibb.co/yRzsjHP/4-google.jpg"
+    },
+    {
+        "title": "Google Pixelbook",
+        "subtitle": "High-End Chromebook",
+        "brandName": "Google",
+        "imageUrl": "https://i.ibb.co/yRzsjHP/4-google.jpg"
+    },
+    {
+        "title": "Core i9 Processor",
+        "subtitle": "Intel's High-Performance CPU",
+        "brandName": "Intel",
+        "imageUrl": "https://i.ibb.co/HDJJX1M/5-intel.jpg"
+    },
+    {
+        "title": "Intel SSD 660p",
+        "subtitle": "Fast and Reliable Storage",
+        "brandName": "Intel",
+        "imageUrl": "https://i.ibb.co/HDJJX1M/5-intel.jpg"
+    },
+    {
+        "title": "Intel NUC Mini PC",
+        "subtitle": "Compact Desktop Solution",
+        "brandName": "Intel",
+        "imageUrl": "https://i.ibb.co/HDJJX1M/5-intel.jpg"
+    },
+    {
+        "title": "Surface Pro 7",
+        "subtitle": "Versatile 2-in-1 Laptop",
+        "brandName": "Microsoft",
+        "imageUrl": "https://i.ibb.co/y6bYZdM/6-ms.jpg"
+    },
+    {
+        "title": "Microsoft Surface Book 3",
+        "subtitle": "High-End Laptop and Tablet",
+        "brandName": "Microsoft",
+        "imageUrl": "https://i.ibb.co/y6bYZdM/6-ms.jpg"
+    },
+    {
+        "title": "Xbox Series X",
+        "subtitle": "Next-Gen Gaming Console",
+        "brandName": "Microsoft",
+        "imageUrl": "https://i.ibb.co/y6bYZdM/6-ms.jpg"
+    }
+]
