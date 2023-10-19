@@ -6,9 +6,9 @@ import { BsFacebook } from "react-icons/bs";
 
 const Footer = () => {
     const footerLinks = <>
-        <Link>Home</Link>
-        <Link>Add Product</Link>
-        <Link>My Cart</Link>
+        <Link to="/">Home</Link>
+        <Link to="/add-product">Add Product</Link>
+        <Link to="/cart">My Cart</Link>
     </>
 
     const socialLinks = <>
