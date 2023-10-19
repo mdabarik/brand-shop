@@ -51,7 +51,7 @@ const Navbar = () => {
                     }
                 </ul>
             </div>
-            <div className="navbar-end">
+            <div className="navbar-end space-x-2">
                 <button className="flex" onClick={handleThemeChange}>
                     {
                         theme == "dark"
@@ -60,7 +60,11 @@ const Navbar = () => {
                     }
 
                 </button>
-                <a className="btn">Login</a>
+
+                <Link to="/login" className="bg-[orange] px-6 py-2 text-black font-medium hover:bg-[#cf8f18] rounded-full">
+                   Login
+                </Link>
+
                 <NavLink to="/cart">
                     <AiOutlineShoppingCart className="text-4xl"></AiOutlineShoppingCart>
                 </NavLink>

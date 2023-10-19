@@ -11,6 +11,7 @@ const ProductDetails = () => {
             .then(res => res.json())
             .then(data => {
                 setProduct(data);
+                console.log(data);
             })
             .catch(err => {
                 console.log(err);

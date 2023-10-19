@@ -7,6 +7,9 @@ import Brand from "../components/Brand/Brand";
 import ProductDetails from "../components/ProductDetails/ProductDetails";
 import EditProduct from "../components/EditProduct.jsx/EditProduct";
 import Cart from "../components/Cart/Cart";
+import Login from "../components/Login/Login";
+import Registration from "../components/Registration/Registration";
+import PrivateRoute from "./PrivateRoute";
 
 const routes = createBrowserRouter([
     {
@@ -25,7 +28,7 @@ const routes = createBrowserRouter([
             },
             {
                 path: '/add-product',
-                element: <AddProduct></AddProduct>,
+                element: <PrivateRoute><AddProduct></AddProduct></PrivateRoute>,
                 loader: () => fetch("http://localhost:5901/brands")
             },
             {
@@ -41,6 +44,14 @@ const routes = createBrowserRouter([
                 path: '/edit/:id',
                 element: <EditProduct></EditProduct>,
                 loader: () => fetch("http://localhost:5901/brands")
+            },
+            {
+                path: '/login',
+                element: <Login></Login>
+            },
+            {
+                path: '/registration',
+                element: <Registration></Registration>
             }
         ]
     }

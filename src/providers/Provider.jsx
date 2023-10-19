@@ -23,9 +23,13 @@ const Provider = ({children}) => {
         document.documentElement.classList = theme;
     }, [theme])
 
+    const [user, setUser] = useState(null);
+
     const information = {
         theme,
-        handleTheme
+        handleTheme,
+        user,
+        
     }
 
     return (

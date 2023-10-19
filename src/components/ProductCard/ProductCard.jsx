@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
+import { Rating } from "@mui/material";
 
-const ProductCard = ({product}) => {
+
+const ProductCard = ({ product }) => {
+
     return (
         <div>
             <div>
@@ -10,7 +13,14 @@ const ProductCard = ({product}) => {
             </div>
             <div>
                 <h2>{product.productName}</h2>
-                <div>Rating goes here..</div>
+                <div>
+                    <Rating
+                        className="py-2 rounded-lg"
+                        name="simple-controlled"
+                        value={product.rating}
+                        readOnly
+                    />
+                </div>
                 <p>{product.shortDesc}</p>
                 <p>Price: ${product.price}</p>
                 <div>
