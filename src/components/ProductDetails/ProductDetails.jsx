@@ -28,7 +28,7 @@ const ProductDetails = () => {
     const handleAddToCart = () => {
         const email = user?.email;
         const info = { id, email }
-        fetch(`http://localhost:5901/cart/${id}`, {
+        fetch(`http://localhost:5901/cart`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

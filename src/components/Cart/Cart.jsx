@@ -7,8 +7,10 @@ const Cart = () => {
 
     const { user } = useContext(GlobalContext);
     const [isLoading, setIsLoading] = useState(true);
+    const [isLoading2, setIsLoading2] = useState(true); 
 
     const [carts, setCarts] = useState([]);
+    console.log('carts', carts);
     useEffect(() => {
         fetch('http://localhost:5901/cart')
             .then(res => res.json())
@@ -35,15 +37,20 @@ const Cart = () => {
             cancelButtonColor: '#d33',
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
+            const info = { email: user.email, id: id }
             if (result.isConfirmed) {
-                fetch(`http://localhost:5901/cart/${id}`, {
-                    method: 'DELETE'
+                fetch(`http://localhost:5901/cart`, {
+                    method: 'DELETE',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(info)
                 })
                     .then(res => res.json())
                     .then(data => {
-                        console.log(data);
+                        console.log(data, 'delete cart');
                         console.log('deleted');
-                        const filtered = carts.filter(cart => cart._id != id);
+                        const filtered = carts.filter(cart => cart.prodId != id && user.email == cart.email);
                         setCarts(filtered);
                         if (data.deletedCount > 0) {
                             Swal.fire({
@@ -54,9 +61,11 @@ const Cart = () => {
                                 timer: 1500
                             })
                         }
+                        setIsLoading2(false);
                     })
                     .catch(err => {
                         console.log(err);
+                        setIsLoading2(false);
                     })
             }
         })
@@ -76,7 +85,8 @@ const Cart = () => {
                     :
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {
-                            carts.map(cart => <Card handleDelete={handleDelete} key={cart._id} cart={cart}></Card>)
+                            isLoading2 ?
+                            carts.map(cart => <Card handleDelete={handleDelete} key={cart._id} cart={cart}></Card>) : ""
                         }
                     </div> : ""
             }
