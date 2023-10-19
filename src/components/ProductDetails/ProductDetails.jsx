@@ -2,11 +2,16 @@ import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import { GlobalContext } from "../../providers/Provider";
+import { Rating } from "@mui/material";
+import StarIcon from '@mui/icons-material/Star';
+
 
 const ProductDetails = () => {
     const { id } = useParams();
     const [product, setProduct] = useState({});
     const { user } = useContext(GlobalContext);
+
+    console.log(typeof product.rating);
 
     useEffect(() => {
         fetch(`http://localhost:5901/products/${id}`)
@@ -46,7 +51,7 @@ const ProductDetails = () => {
                         icon: 'error',
                         title: 'Opps!',
                         text: 'Already Exist in the Cart.',
-                      })
+                    })
                 }
             })
             .catch(err => {
@@ -64,11 +69,21 @@ const ProductDetails = () => {
                     <h4 className="text-xl">Brand: {product.brandName}</h4>
                     <h2 className="text-3xl font-bold">Name: {product.productName}</h2>
                     <h3>Type: {product.brandType}</h3>
+                    <div className="">
+                        <Rating
+                            className="py-2 rounded-lg "
+                            name="simple-controlled"
+                            value={product.rating || 1}
+                            precision={0.5}
+                            emptyIcon={<StarIcon style={{ color: 'grey' }} fontSize="inherit" />}
+                            readOnly
+                        />
+                    </div>
                     <div>
                         <p>Price: ${product.price}</p>
                     </div>
                     <p>Description: {product.shortDesc}</p>
-                    <button onClick={ handleAddToCart } className="bg-[orange] rounded-lg px-6 py-2 font-bold text-gray-100 hover:bg-[#cf8f18]">Add To Cart</button>
+                    <button onClick={handleAddToCart} className="bg-[orange] rounded-lg px-6 py-2 font-bold text-gray-100 hover:bg-[#cf8f18]">Add To Cart</button>
                 </div>
             </div>
         </div>

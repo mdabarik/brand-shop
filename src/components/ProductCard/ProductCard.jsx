@@ -3,7 +3,6 @@ import { Rating } from "@mui/material";
 import StarIcon from '@mui/icons-material/Star';
 
 
-
 const ProductCard = ({ product }) => {
 
     return (
@@ -21,7 +20,7 @@ const ProductCard = ({ product }) => {
                         name="simple-controlled"
                         value={product.rating}
                         precision={0.5}
-                        emptyIcon={<StarIcon style={{ opacity: 0.55, color: 'grey' }} fontSize="inherit" />}
+                        emptyIcon={<StarIcon style={{ color: 'grey' }} fontSize="inherit" />}
                         readOnly
                     />
                 </div>
