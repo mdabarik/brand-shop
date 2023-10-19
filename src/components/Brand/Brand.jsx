@@ -16,7 +16,7 @@ const Brand = () => {
     return (
         <div>
             <BrandSlider></BrandSlider>
-            <div className="my-8">
+            <div className="py-8">
 
                 {
                     products.length == 0 ? <h1 className="text-3xl font-bold text-center py-5">No products available for - {brand}</h1> :

@@ -38,7 +38,7 @@ const Navbar = () => {
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
-                        <AiOutlineMenuUnfold className="text-3xl"></AiOutlineMenuUnfold>
+                        <AiOutlineMenuUnfold className="text-2xl md:text-3xl"></AiOutlineMenuUnfold>
                     </label>
                     <ul tabIndex={0} className="menu menu-sm navbar-li dropdown-content mt-3 z-[1] p-2 shadow rounded-box w-52 text-black drop-shadow-2xl border-[1px] dark:border-[#484444] dark:text-white dark:bg-[#222]">
                         {
@@ -46,9 +46,9 @@ const Navbar = () => {
                         }
                     </ul>
                 </div>
-                <Link className="flex items-center justify-center" to="/">
-                    <img className="h-[48px]" src={Logo} alt="Logo" />
-                    <span className="font-semibold text-2xl ml-3">Brand Shop</span>
+                <Link className="flex flex-col md:flex-row items-center justify-center" to="/">
+                    <img className="h-[30px] md:h-[48px]" src={Logo} alt="Logo" />
+                    <span className="font-semibold text-sm md:text-2xl md:ml-3">Brand Shop</span>
                 </Link>
             </div>
             <div className="navbar-center hidden lg:flex">
@@ -78,8 +78,8 @@ const Navbar = () => {
                         user
                             ?
 
-                            <div className="flex gap-3 items-center justify-center">
-                                <div className="flex items-center flex-col-reverse md:flex-row gap-2">
+                            <div className="flex flex-col md:flex-row gap-0 md:gap-3 items-center justify-center">
+                                <div className="flex items-center flex-col-reverse md:flex-row md:gap-2">
                                     <div>
                                         <p className="text-[10px] md:text-sm">{user.displayName}</p>
                                     </div>
@@ -88,7 +88,7 @@ const Navbar = () => {
                                     </div>
                                 </div>
                                 <div onClick={handleLogout} className="">
-                                    <button className="bg-[#db332a] py-2 px-3 flex items-center justify-center rounded-full normal-case text-white border-none hover:bg-[#b5100b] active:bg-[#b5100b]">
+                                    <button className="bg-[#db332a] px-2 py-1 md:py-2 md:px-3 flex items-center justify-center rounded-full normal-case text-white border-none hover:bg-[#b5100b] active:bg-[#b5100b]">
                                         <AiOutlineLogout className="text-xl"></AiOutlineLogout>
                                         <span className="text-[12px]">Logout</span>
                                     </button>
