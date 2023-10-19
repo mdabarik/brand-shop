@@ -10,7 +10,7 @@ const Card = ({ cart, handleDelete }) => {
     const [product, setProduct] = useState({});
 
     useEffect(() => {
-        fetch(`http://localhost:5901/products/${cart.prodId}`)
+        fetch(`https://brand-shop-server-ecfp6pt65-mdabarik.vercel.app/products/${cart.prodId}`)
             .then(res => res.json())
             .then(data => {
                 setProduct(data);

@@ -18,7 +18,7 @@ const EditProduct = () => {
     const [sBrandT, setSBrandT] = useState("");
    
     useEffect(() => {
-        fetch(`http://localhost:5901/product-types`)
+        fetch(`https://brand-shop-server-ecfp6pt65-mdabarik.vercel.app/product-types`)
         .then(res => res.json())
         .then(data => {
             setProdTypes(data);
@@ -31,7 +31,7 @@ const EditProduct = () => {
     const [product, setProduct] = useState({});
     const { id } = useParams();
     useEffect(() => {
-        fetch(`http://localhost:5901/products/${id}`)
+        fetch(`https://brand-shop-server-ecfp6pt65-mdabarik.vercel.app/products/${id}`)
         .then(res => res.json())
         .then(data => {
             setProduct(data);
@@ -73,7 +73,7 @@ const EditProduct = () => {
             productName, brandName, price, brandType, shortDesc, rating, photoURL
         }
 
-        fetch(`http://localhost:5901/edit/${id}`, {
+        fetch(`https://brand-shop-server-ecfp6pt65-mdabarik.vercel.app/edit/${id}`, {
             method: "PUT",
             headers: {
                 'content-type': 'application/json'

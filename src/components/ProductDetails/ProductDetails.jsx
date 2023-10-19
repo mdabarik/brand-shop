@@ -14,7 +14,7 @@ const ProductDetails = () => {
     console.log(typeof product.rating);
 
     useEffect(() => {
-        fetch(`http://localhost:5901/products/${id}`)
+        fetch(`https://brand-shop-server-ecfp6pt65-mdabarik.vercel.app/products/${id}`)
             .then(res => res.json())
             .then(data => {
                 setProduct(data);
@@ -27,7 +27,7 @@ const ProductDetails = () => {
     const handleAddToCart = () => {
         const email = user?.email;
         const info = { id, email }
-        fetch(`http://localhost:5901/cart`, {
+        fetch(`https://brand-shop-server-ecfp6pt65-mdabarik.vercel.app/cart`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

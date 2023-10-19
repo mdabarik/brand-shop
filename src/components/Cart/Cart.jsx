@@ -11,7 +11,7 @@ const Cart = () => {
 
     const [carts, setCarts] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5901/cart')
+        fetch('https://brand-shop-server-ecfp6pt65-mdabarik.vercel.app/cart')
             .then(res => res.json())
             .then(data => {
                 const filtered = data.filter(d => d.email == user.email);
@@ -36,7 +36,7 @@ const Cart = () => {
         }).then((result) => {
             const info = { email: user.email, id: id }
             if (result.isConfirmed) {
-                fetch(`http://localhost:5901/cart`, {
+                fetch(`https://brand-shop-server-ecfp6pt65-mdabarik.vercel.app/cart`, {
                     method: 'DELETE',
                     headers: {
                         'content-type': 'application/json'
