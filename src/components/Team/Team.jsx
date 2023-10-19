@@ -20,10 +20,10 @@ const Team = () => {
     }, []);
 
     return (
-        <div className='container mx-auto flex flex-col items-center justify-center pb-10 w-[90%] md:w-[100%] space-y-3'>
-            <h2 className='text-2xl font-bold text-center'>Our Team <span className="text-[orange] text-3xl">Members</span></h2>
-            <p className='text-sm text-center'>Get to Know the Heart and Soul of Brand Shop</p>
-            <div className="pb-8 w-[100vw] container">
+        <div className='container mx-auto flex flex-col items-center justify-center pb-10 space-y-3'>
+            <h2 className='text-xl md:text-2xl font-bold text-center'>Our Team <span className="text-[orange]">Members</span></h2>
+            <p className='text-[12px] md:text-sm text-center'>Get to Know the Heart and Soul of Brand Shop</p>
+            <div className="pb-8 w-[90vw] md:w-[100vw] container">
                 <Swiper
                     slidesPerView={2}
                     loop={true}

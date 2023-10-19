@@ -101,8 +101,8 @@ const EditProduct = () => {
         <div className="">
             <div className="flex flex-col items-center justify-center py-10 space-y-2">
                 <h2 className="text-2xl font-semibold">Add New Product</h2>
-                <p className="text-sm pb-5">Provide details information to add new product.</p>
-                <form onSubmit={handleFormSubmit} className="w-[60%]">
+                <p className="text-sm pb-5 text-center w-[92%]">Provide details information to add new product.</p>
+                <form onSubmit={handleFormSubmit} className="w-[90%] md:w-[60%]">
                     {
                         errorMessage == "" ? "" :
                             <div className="alert alert-error flex items-center justify-center">

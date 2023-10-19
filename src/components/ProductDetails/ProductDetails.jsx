@@ -58,10 +58,10 @@ const ProductDetails = () => {
     }
 
     return (
-        <div className="container mx-auto">
-            <div className="flex py-10 w-[100%] space-y-3">
-                <div className="w-[50%]">
-                    <img className="w-[100%] h-[500px] object-cover rounded-lg" src={product.photoURL} alt={product.productName} />
+        <div className="container w-[90%] md:w-[100%] mx-auto">
+            <div className="flex flex-col md:flex-row py-10 w-[100%] space-y-3">
+                <div className="w-[100%] md:w-[50%]">
+                    <img className="w-[100%] h-[200px] md:h-[500px] object-cover rounded-lg" src={product.photoURL} alt={product.productName} />
                 </div>
                 <div className="ml-4 space-y-3">
                     <h4 className="text-xl">Brand: {product.brandName}</h4>

@@ -70,14 +70,14 @@ const Cart = () => {
 
     return (
         <div className="container mx-auto flex flex-col items-center justify-center py-10">
-            <h2 className="font-bold text-3xl py-5">Products in <span className="text-[orange]">Cart</span> </h2>
-
+            <h2 className="font-bold text-2xl md:text-3xl">Products in <span className="text-[orange]">Cart</span> </h2>
+            <p className="text-sm font-thin my-2 mb-3">All products on you cart you selected</p>
             {
                 isLoading == false ?
                     carts.length == 0 ?
                         <h1 className="text-center text-3xl my-5 font-bold text-red-900 bg-[#ffffff61] p-3 px-6 rounded-full">Sorry, not product on cart.</h1>
                         :
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 container mx-auto w-[90%] md:w-[100%]">
                             {
                                 isLoading2 ?
                                     carts.map(cart => <Card handleDelete={handleDelete} key={cart._id} cart={cart}></Card>) : ""

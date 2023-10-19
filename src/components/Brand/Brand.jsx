@@ -16,12 +16,12 @@ const Brand = () => {
     return (
         <div>
             <BrandSlider></BrandSlider>
-            <div className="py-8">
+            <div className="py-8 container w-[90%] mx-auto">
 
                 {
                     products.length == 0 ? <h1 className="text-3xl font-bold text-center py-5">No products available for - {brand}</h1> :
                         <>
-                            <h2 className="text-3xl text-center py-5 font-bold">All Products: <span className="text-[orange]">{brand}</span></h2>
+                            <h2 className="text-2xl md:text-3xl text-center py-5 font-bold">All Products: <span className="text-[orange]">{brand}</span></h2>
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 container mx-auto">
                                 {
                                     products.map(product => <ProductCard key={product._id} product={product}></ProductCard>)
