@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { FcGoogle } from 'react-icons/fc';
 import { GlobalContext } from '../../providers/Provider';
 import Swal from 'sweetalert2';
@@ -9,11 +9,8 @@ const Login = () => {
 
     const {
         user,
-        loading,
-        registerUser,
         loginNormal,
         signInWithGoogle,
-        logOut,
         setUser
     } = useContext(GlobalContext);
 
@@ -72,7 +69,7 @@ const Login = () => {
             <div className="flex flex-col items-center justify-center py-10 space-y-2">
                 <h2 className="text-2xl font-semibold">Login now</h2>
                 <p className="text-sm pb-5">Provide details information to login</p>
-                <form onSubmit={handleLogin} className="w-[60%]">
+                <form onSubmit={handleLogin} className="w-[90%] md:w-[60%]">
 
                     <div className="form-control">
                         <label htmlFor="email" className="label">Email</label>

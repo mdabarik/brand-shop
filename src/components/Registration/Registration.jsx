@@ -104,7 +104,7 @@ const Registration = () => {
             <div className="flex flex-col items-center justify-center py-10 space-y-2">
                 <h2 className="text-2xl font-semibold">Register now</h2>
                 <p className="text-sm pb-5">Provide details information to create your account</p>
-                <form onSubmit={handleRegistration} className="w-[60%]">
+                <form onSubmit={handleRegistration} className="w-[90%] mx-auto md:w-[60%]">
                     <div className="form-control">
                         <label htmlFor="name" className="label">Name</label>
                         <input required type="text" name="name" id="name" placeholder="Name" className="input input-bordered  dark:text-black" />
