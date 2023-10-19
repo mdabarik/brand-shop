@@ -48,7 +48,7 @@ const Login = () => {
             })
             .catch(error => {
                 console.log(error);
-                setErrorMessage(error.message);
+                setErrorMessage("Wrong Email or Password");
             })
     }
 
@@ -93,7 +93,7 @@ const Login = () => {
                 </form>
                 {
                     errorMessage == "" ? "" :
-                        <div className="alert bg-[#ff000060] flex items-center justify-center w-[60%]">
+                        <div className=" bg-[#ff000014] text-red-400 py-3 rounded-full flex items-center justify-center w-[60%]">
                             <span>{errorMessage}</span>
                         </div>
                 }

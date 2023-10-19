@@ -125,6 +125,12 @@ const Registration = () => {
                         <input required type="text" name="photo" id="photo-url" placeholder="Photo URL" className="input input-bordered  dark:text-black" />
                     </div>
                     <div className="form-control">
+                        <label className="cursor-pointer label flex justify-start items-center space-y-2 gap-4">
+                            <input required type="checkbox" className="checkbox checkbox-warning" />
+                            <span className="label-text text-sm underline">Accept terms and conditions</span>
+                        </label>
+                    </div>
+                    <div className="form-control">
                         <input type="submit" className="btn btn-full w-full text-white bg-[orange] hover:bg-[#ffb731] hover:border-[orange] border-[orange] normal-case text-lg mt-3" value="Create Accouont" />
                     </div>
                     <div className='text-center pt-3'>
