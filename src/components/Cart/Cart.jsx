@@ -2,12 +2,13 @@ import { useContext, useEffect, useState } from "react";
 import Card from "./Card";
 import Swal from "sweetalert2";
 import { GlobalContext } from "../../providers/Provider";
+import CartCard from "./CartCard";
 
 const Cart = () => {
 
     const { user } = useContext(GlobalContext);
     const [isLoading, setIsLoading] = useState(true);
-    const [isLoading2, setIsLoading2] = useState(true); 
+    const [isLoading2, setIsLoading2] = useState(true);
 
     const [carts, setCarts] = useState([]);
     console.log('carts', carts);
@@ -76,20 +77,27 @@ const Cart = () => {
 
     return (
         <div className="container mx-auto flex flex-col items-center justify-center py-10">
-            <h2 className="font-bold text-3xl mb-5">Products in Cart</h2>
-            
+            <h2 className="font-bold text-3xl py-5">Products in <span className="text-[orange]">Cart</span> </h2>
+
             {
-                isLoading == false ? 
-                carts.length == 0 ?
-                    <h1 className="text-center text-3xl my-5 font-bold text-red-900 bg-[#ffffff61] p-3 px-6 rounded-full">Sorry, not product on cart.</h1>
-                    :
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {
-                            isLoading2 ?
-                            carts.map(cart => <Card handleDelete={handleDelete} key={cart._id} cart={cart}></Card>) : ""
-                        }
-                    </div> : ""
+                isLoading == false ?
+                    carts.length == 0 ?
+                        <h1 className="text-center text-3xl my-5 font-bold text-red-900 bg-[#ffffff61] p-3 px-6 rounded-full">Sorry, not product on cart.</h1>
+                        :
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            {
+                                isLoading2 ?
+                                    carts.map(cart => <Card handleDelete={handleDelete} key={cart._id} cart={cart}></Card>) : ""
+                            }
+                        </div> : ""
             }
+
+            {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 py-10">
+                {
+                    isLoading2 ?
+                        // carts.map(cart => <CartCard  key={cart._id} product={cart}></CartCard>) : ""
+                }
+            </div> */}
 
         </div>
     );
