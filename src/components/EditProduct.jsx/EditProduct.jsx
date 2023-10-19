@@ -24,7 +24,6 @@ const EditProduct = () => {
             setProdTypes(data);
         })
         .catch(error => {
-            console.log(error);
         })
     }, [])
 
@@ -41,7 +40,6 @@ const EditProduct = () => {
             setValue(data.rating)
         })
         .catch(err => {
-            console.log(err);
         })
     }, [])
 
@@ -56,13 +54,10 @@ const EditProduct = () => {
         const shortDesc = form.shortDesc.value;
         const rating = value;
         const photoURL = form.photoURL.value;
-        // console.log(productName, brandName, price, brandType, shortDesc, rating, photoURL);
-        // console.log(rating);
 
         setErrorMessage("");
         if (rating === 0) {
             setErrorMessage("Please select product rating.");
-            console.log("select rating");
             return;
         }
         if (brandName === "") {
@@ -78,8 +73,6 @@ const EditProduct = () => {
             productName, brandName, price, brandType, shortDesc, rating, photoURL
         }
 
-        console.log(product);
-
         fetch(`http://localhost:5901/edit/${id}`, {
             method: "PUT",
             headers: {
@@ -89,7 +82,6 @@ const EditProduct = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 if (data.modifiedCount) {
                     Swal.fire({
                         position: 'top-end',
@@ -100,8 +92,7 @@ const EditProduct = () => {
                     })
                 }
             })
-            .catch(err => {
-                console.log(err);
+            .catch(() => {
             })
 
     }

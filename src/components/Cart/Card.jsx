@@ -15,8 +15,7 @@ const Card = ({ cart, handleDelete }) => {
             .then(data => {
                 setProduct(data);
             })
-            .catch(err => {
-                console.log(err);
+            .catch(() => {
             })
     }, []);
 

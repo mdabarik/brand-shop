@@ -2,7 +2,6 @@ import { useContext, useEffect, useState } from "react";
 import Card from "./Card";
 import Swal from "sweetalert2";
 import { GlobalContext } from "../../providers/Provider";
-import CartCard from "./CartCard";
 
 const Cart = () => {
 
@@ -11,18 +10,15 @@ const Cart = () => {
     const [isLoading2, setIsLoading2] = useState(true);
 
     const [carts, setCarts] = useState([]);
-    console.log('carts', carts);
     useEffect(() => {
         fetch('http://localhost:5901/cart')
             .then(res => res.json())
             .then(data => {
-                // console.log(data);
                 const filtered = data.filter(d => d.email == user.email);
                 setCarts(filtered);
                 setIsLoading(false)
             })
             .catch(err => {
-                console.log(err);
                 setIsLoading(false)
             })
     }, []);
@@ -49,8 +45,6 @@ const Cart = () => {
                 })
                     .then(res => res.json())
                     .then(data => {
-                        console.log(data, 'delete cart');
-                        console.log('deleted');
                         const filtered = carts.filter(cart => cart.prodId != id && user.email == cart.email);
                         setCarts(filtered);
                         if (data.deletedCount > 0) {
@@ -65,7 +59,6 @@ const Cart = () => {
                         setIsLoading2(false);
                     })
                     .catch(err => {
-                        console.log(err);
                         setIsLoading2(false);
                     })
             }

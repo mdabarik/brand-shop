@@ -17,8 +17,8 @@ const AddProduct = () => {
         .then(data => {
             setProdTypes(data);
         })
-        .catch(error => {
-            console.log(error);
+        .catch(() => {
+            
         })
     }, [])
 
@@ -40,13 +40,10 @@ const AddProduct = () => {
         const shortDesc = form.shortDesc.value;
         const rating = value;
         const photoURL = form.photoURL.value;
-        // console.log(productName, brandName, price, brandType, shortDesc, rating, photoURL);
-        // console.log(rating);
 
         setErrorMessage("");
         if (rating === 0) {
             setErrorMessage("Please select product rating.");
-            console.log("select rating");
             return;
         }
         if (brandName === "") {
@@ -71,7 +68,6 @@ const AddProduct = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 if (data.insertedId) {
                     Swal.fire({
                         position: 'top-end',
@@ -82,8 +78,8 @@ const AddProduct = () => {
                     })
                 }
             })
-            .catch(err => {
-                console.log(err);
+            .catch(() => {
+                
             })
 
     }

@@ -13,7 +13,6 @@ const Team = () => {
             .then(res => res.json())
             .then(data => {
                 setTeams(data);
-                console.log(data);
             })
             .catch(err => {
                 console.log(err);

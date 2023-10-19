@@ -1,8 +1,6 @@
 
 const Slide = ({ slider }) => {
-    
     const { imageUrl, subtitle, title } = slider;
-    console.log(imageUrl);
 
     return (
         <div className="h-[500px] w-[100vw] relative">

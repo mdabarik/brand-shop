@@ -22,7 +22,6 @@ const Registration = () => {
         return <Navigate to="/" />
     }
 
-
     const handleRegistration = (e) => {
         e.preventDefault();
         const form = e.target;
@@ -30,7 +29,6 @@ const Registration = () => {
         const email = form.email.value.trim();
         const password = form.password.value.trim();
         const photo = form.photo.value.trim();
-        console.log(name, email, password, photo);
 
         setErrorMessage("");
         // validation
@@ -56,7 +54,6 @@ const Registration = () => {
                     timer: 1500
                 })
 
-                console.log(user);
 
                 updateProfile(user, {
                     displayName: name,

@@ -28,7 +28,6 @@ const Login = () => {
         const form = e.target;
         const email = form.email.value.trim();
         const password = form.password.value.trim();
-        console.log(email, password);
 
         setErrorMessage("");
         loginNormal(email, password)
@@ -46,8 +45,7 @@ const Login = () => {
                 const curUser = userCredential.user;
                 setUser(curUser)
             })
-            .catch(error => {
-                console.log(error);
+            .catch(() => {
                 setErrorMessage("Wrong Email or Password");
             })
     }

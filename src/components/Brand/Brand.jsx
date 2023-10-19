@@ -8,9 +8,7 @@ const Brand = () => {
     const allProduct = useLoaderData();
     const [products, setProducts] = useState([]);
     useEffect(() => {
-        console.log(allProduct, "useFe", brand);
         const filtered = allProduct.filter(product => product.brandName == brand);
-        console.log(filtered);
         setProducts(filtered);
     }, [])
 

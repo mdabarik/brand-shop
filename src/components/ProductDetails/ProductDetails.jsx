@@ -18,7 +18,6 @@ const ProductDetails = () => {
             .then(res => res.json())
             .then(data => {
                 setProduct(data);
-                console.log(data);
             })
             .catch(err => {
                 console.log(err);
@@ -37,7 +36,6 @@ const ProductDetails = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 if (data.upsertedId) {
                     Swal.fire({
                         position: 'top-end',

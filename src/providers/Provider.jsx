@@ -59,17 +59,10 @@ const Provider = ({children}) => {
         setUser
     }
 
-    console.log("user", user);
-
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
-            const uid = currentUser?.uid;
-            console.log("Loggedin user id", uid);
-            // console.log('user in the auth state changed', currentUser);
-            console.log("current use inside onAuthStateChanged", currentUser)
-            console.log("registered or logged in");
             setUser(currentUser);
-            setLoading(false);
+            setLoading(false)
         })
         return () => unsubscribe();
     }, [])

@@ -3,8 +3,6 @@ import StarIcon from '@mui/icons-material/Star';
 
 const Slide = ({ team }) => {
 
-    console.log(team);
-
     return (
         <div className="text-white h-[350px] flex flex-col items-center justify-center rounded-lg relative">
             <img className="h-[350px] w-full rounded-lg" src={team?.img} alt="img" />

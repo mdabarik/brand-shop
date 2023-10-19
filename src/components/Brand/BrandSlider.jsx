@@ -18,10 +18,8 @@ const BrandSlider = () => {
             .then(data => {
                 const filtered = data.filter(slide => slide.brandName == brand);
                 setSliders(filtered);
-                console.log(filtered, 'fil');
             })
-            .catch(err => {
-                console.log(err);
+            .catch(() => {
             })
     }, []);
 

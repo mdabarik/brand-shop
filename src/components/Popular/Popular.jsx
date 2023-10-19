@@ -11,8 +11,7 @@ const Popular = () => {
             const mostPopular = data.slice(0, 3);
             setProducts(mostPopular);
         })
-        .catch(err => {
-            console.log(err);
+        .catch(() => {
         })
     }, []);
 
