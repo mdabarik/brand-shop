@@ -79,8 +79,7 @@ const Cart = () => {
                         :
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 container mx-auto w-[90%] md:w-[100%]">
                             {
-                                isLoading2 ?
-                                    carts.map(cart => <Card handleDelete={handleDelete} key={cart._id} cart={cart}></Card>) : ""
+                                    carts.map(cart => <Card handleDelete={handleDelete} key={cart._id} cart={cart}></Card>)
                             }
                         </div> : ""
             }
