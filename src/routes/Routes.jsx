@@ -20,7 +20,7 @@ const routes = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>,
-                loader: () => fetch("https://brand-shop-server-five.vercel.app//brands")
+                loader: () => fetch("https://brand-shop-server-dhnz4w4vc-mdabarik.vercel.app/brands")
             },
             {
                 path: '/cart',
@@ -29,12 +29,12 @@ const routes = createBrowserRouter([
             {
                 path: '/add-product',
                 element: <PrivateRoute><AddProduct></AddProduct></PrivateRoute>,
-                loader: () => fetch("https://brand-shop-server-five.vercel.app//brands")
+                loader: () => fetch("https://brand-shop-server-dhnz4w4vc-mdabarik.vercel.app/brands")
             },
             {
                 path: '/brand/:brand',
                 element: <Brand></Brand>,
-                loader: () => fetch("https://brand-shop-server-five.vercel.app//products")
+                loader: () => fetch("https://brand-shop-server-dhnz4w4vc-mdabarik.vercel.app/products")
             },
             {
                 path: '/product/:id',
@@ -43,7 +43,7 @@ const routes = createBrowserRouter([
             {
                 path: '/edit/:id',
                 element: <PrivateRoute><EditProduct></EditProduct></PrivateRoute>,
-                loader: () => fetch("https://brand-shop-server-five.vercel.app//brands")
+                loader: () => fetch("https://brand-shop-server-dhnz4w4vc-mdabarik.vercel.app/brands")
             },
             {
                 path: '/login',
