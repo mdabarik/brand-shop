@@ -12,7 +12,7 @@ const AddProduct = () => {
     const [selectedBrandType, setSelectedBrandType] = useState("");
 
     useEffect(() => {
-        fetch("https://brand-shop-server-ecfp6pt65-mdabarik.vercel.app/product-types")
+        fetch("https://brand-shop-server-five.vercel.app//product-types")
         .then(res => res.json())
         .then(data => {
             setProdTypes(data);
@@ -59,7 +59,7 @@ const AddProduct = () => {
             productName, brandName, price, brandType, shortDesc, rating, photoURL
         }
 
-        fetch("https://brand-shop-server-ecfp6pt65-mdabarik.vercel.app/newprod", {
+        fetch("https://brand-shop-server-five.vercel.app//newprod", {
             method: "POST",
             headers: {
                 'content-type': 'application/json'

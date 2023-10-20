@@ -9,7 +9,7 @@ import Slide from "./Slide";
 const Team = () => {
     const [teams, setTeams] = useState([]);
     useEffect(() => {
-        fetch("https://brand-shop-server-ecfp6pt65-mdabarik.vercel.app/teams")
+        fetch("https://brand-shop-server-five.vercel.app//teams")
             .then(res => res.json())
             .then(data => {
                 setTeams(data);

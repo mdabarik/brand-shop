@@ -5,7 +5,7 @@ const Popular = () => {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        fetch("https://brand-shop-server-ecfp6pt65-mdabarik.vercel.app/products")
+        fetch("https://brand-shop-server-five.vercel.app//products")
         .then(res => res.json())
         .then(data => {
             const mostPopular = data.slice(0, 3);

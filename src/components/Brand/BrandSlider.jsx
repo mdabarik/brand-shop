@@ -13,7 +13,7 @@ const BrandSlider = () => {
     const { brand } = useParams();
 
     useEffect(() => {
-        fetch("https://brand-shop-server-ecfp6pt65-mdabarik.vercel.app/sliders")
+        fetch("https://brand-shop-server-five.vercel.app//sliders")
             .then(res => res.json())
             .then(data => {
                 const filtered = data.filter(slide => slide.brandName == brand);
