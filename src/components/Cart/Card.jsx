@@ -32,7 +32,7 @@ const Card = ({ cart, handleDelete }) => {
 
             <div className="p-4 dark:text-black bg-[white] rounded-b-lg">
                 <h2 className="w-fit rounded-full text-xl font-bold">Product: {product.productName}</h2>
-                <p className="h-[50px] mt-2">{product.shortDesc?.substring(0, 100)}</p>
+                <p className="h-[50px] mt-2">{product.shortDesc?.substring(0, 80)}</p>
                 <div className="flex items-center">
                     <span className="font-bold text-lg mr-2">Rating:</span>
                     <Rating
