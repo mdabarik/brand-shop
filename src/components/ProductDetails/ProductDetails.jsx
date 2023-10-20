@@ -60,10 +60,10 @@ const ProductDetails = () => {
     return (
         <div className="container w-[90%] md:w-[100%] mx-auto">
             <div className="flex flex-col md:flex-row py-10 w-[100%] space-y-3">
-                <div className="w-[100%] md:w-[50%]">
+                <div className=" w-[90vw] md:w-[50vw] lg:w-[50%]">
                     <img className="w-[100%] h-[200px] md:h-[500px] object-cover rounded-lg" src={product.photoURL} alt={product.productName} />
                 </div>
-                <div className="ml-4 space-y-3">
+                <div className="ml-4 space-y-3 flex-1">
                     <h4 className="text-xl">Brand: {product.brandName}</h4>
                     <h2 className="text-3xl font-bold">Name: {product.productName}</h2>
                     <h3>Type: {product.brandType}</h3>
