@@ -11,7 +11,7 @@ const Cart = () => {
 
     const [carts, setCarts] = useState([]);
     useEffect(() => {
-        fetch('https://brand-shop-server-dhnz4w4vc-mdabarik.vercel.app/cart')
+        fetch('https://brand-shop-server-kp2nch5a6-mdabarik.vercel.app/cart')
             .then(res => res.json())
             .then(data => {
                 const filtered = data.filter(d => d.email == user.email);
@@ -36,7 +36,7 @@ const Cart = () => {
         }).then((result) => {
             const info = { email: user.email, id: id }
             if (result.isConfirmed) {
-                fetch(`https://brand-shop-server-dhnz4w4vc-mdabarik.vercel.app/cart`, {
+                fetch(`https://brand-shop-server-kp2nch5a6-mdabarik.vercel.app/cart`, {
                     method: 'DELETE',
                     headers: {
                         'content-type': 'application/json'

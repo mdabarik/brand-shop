@@ -14,7 +14,7 @@ const ProductDetails = () => {
     console.log(typeof product.rating);
 
     useEffect(() => {
-        fetch(`https://brand-shop-server-dhnz4w4vc-mdabarik.vercel.app/products/${id}`)
+        fetch(`https://brand-shop-server-kp2nch5a6-mdabarik.vercel.app/products/${id}`)
             .then(res => res.json())
             .then(data => {
                 setProduct(data);
@@ -27,7 +27,7 @@ const ProductDetails = () => {
     const handleAddToCart = () => {
         const email = user?.email;
         const info = { id, email }
-        fetch(`https://brand-shop-server-dhnz4w4vc-mdabarik.vercel.app/cart`, {
+        fetch(`https://brand-shop-server-kp2nch5a6-mdabarik.vercel.app/cart`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

@@ -10,7 +10,7 @@ const Card = ({ cart, handleDelete }) => {
     const [product, setProduct] = useState({});
 
     useEffect(() => {
-        fetch(`https://brand-shop-server-dhnz4w4vc-mdabarik.vercel.app/products/${cart.prodId}`)
+        fetch(`https://brand-shop-server-kp2nch5a6-mdabarik.vercel.app/products/${cart.prodId}`)
             .then(res => res.json())
             .then(data => {
                 setProduct(data);
@@ -32,7 +32,7 @@ const Card = ({ cart, handleDelete }) => {
 
             <div className="p-4 dark:text-black bg-[white] rounded-b-lg">
                 <h2 className="w-fit rounded-full text-xl font-bold">Product: {product.productName}</h2>
-                <p className="h-[50px] mt-2">{product.shortDesc?.substring(0, 80)}</p>
+                <p className="min-h-[50px] mt-2">{product.shortDesc?.substring(0, 80)}</p>
                 <div className="flex items-center">
                     <span className="font-bold text-lg mr-2">Rating:</span>
                     <Rating
