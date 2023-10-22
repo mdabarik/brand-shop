@@ -11,10 +11,8 @@ const ProductDetails = () => {
     const [product, setProduct] = useState({});
     const { user } = useContext(GlobalContext);
 
-    console.log(typeof product.rating);
-
     useEffect(() => {
-        fetch(`https://brand-shop-server-kp2nch5a6-mdabarik.vercel.app/products/${id}`)
+        fetch(`https://brand-shop-server-e61d5nzmg-mdabarik.vercel.app/products/${id}`)
             .then(res => res.json())
             .then(data => {
                 setProduct(data);
@@ -25,34 +23,35 @@ const ProductDetails = () => {
     }, []);
 
     const handleAddToCart = () => {
-        const email = user?.email;
-        const info = { id, email }
-        fetch(`https://brand-shop-server-kp2nch5a6-mdabarik.vercel.app/cart`, {
+        const userEMAIL = user?.email;
+        const productID = id;
+        const information = { userEMAIL, productID }
+        fetch(`https://brand-shop-server-e61d5nzmg-mdabarik.vercel.app/mycart`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(info)
+            body: JSON.stringify(information)
         })
             .then(res => res.json())
-            .then(data => {
-                if (data.upsertedId) {
+            .then(responseData => {
+                if (responseData.upsertedId) {
                     Swal.fire({
                         position: 'top-end',
                         icon: 'success',
-                        title: 'Product added in cart.',
+                        title: 'Great! Product has beed added in the cart.',
                         showConfirmButton: false,
-                        timer: 1500
+                        timer: 2000
                     })
                 } else {
                     Swal.fire({
                         icon: 'error',
-                        title: 'Opps!',
-                        text: 'Already Exist in the Cart.',
+                        title: 'Oh!! Sorry!',
+                        text: 'This product exist on cart',
                     })
                 }
             })
-            .catch(err => {
+            .catch((err) => {
                 console.log(err);
             })
     }

@@ -7,63 +7,62 @@ const Cart = () => {
 
     const { user } = useContext(GlobalContext);
     const [isLoading, setIsLoading] = useState(true);
-    const [isLoading2, setIsLoading2] = useState(true);
 
     const [carts, setCarts] = useState([]);
     useEffect(() => {
-        fetch('https://brand-shop-server-kp2nch5a6-mdabarik.vercel.app/cart')
-            .then(res => res.json())
-            .then(data => {
-                const filtered = data.filter(d => d.email == user.email);
-                setCarts(filtered);
+        fetch('https://brand-shop-server-e61d5nzmg-mdabarik.vercel.app/mycart')
+            .then(response => response.json())
+            .then(fetchedData => {
+                const extractedData = fetchedData.filter(cart => cart.userEMAIL == user.email);
+                setCarts(extractedData);
                 setIsLoading(false)
             })
-            .catch(err => {
+            .catch(() => {
                 setIsLoading(false)
             })
     }, []);
 
     const handleDelete = (id) => {
-
         Swal.fire({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
+            title: 'Are you sure? Thik it',
+            text: "Once deleted. It can't be recovered! Understand?",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
-        }).then((result) => {
-            const info = { email: user.email, id: id }
-            if (result.isConfirmed) {
-                fetch(`https://brand-shop-server-kp2nch5a6-mdabarik.vercel.app/cart`, {
+            confirmButtonText: 'Hmm, delete it!'
+        }).then((res) => {
+            const userEMAIL = user.email;
+            const productID = id;
+            const information = { userEMAIL, productID }
+            if (res.isConfirmed) {
+                fetch(`https://brand-shop-server-e61d5nzmg-mdabarik.vercel.app/mycart`, {
                     method: 'DELETE',
                     headers: {
                         'content-type': 'application/json'
                     },
-                    body: JSON.stringify(info)
+                    body: JSON.stringify(information)
                 })
                     .then(res => res.json())
                     .then(data => {
-                        const filtered = carts.filter(cart => cart.prodId != id && user.email == cart.email);
-                        setCarts(filtered);
-                        if (data.deletedCount > 0) {
+                        const filteredCart = carts.filter(cart => cart.productID != id && user.email == cart.userEMAIL);
+                        setCarts(filteredCart);
+                        const isDeleted = data.deletedCount > 0;
+                        if (isDeleted) {
                             Swal.fire({
                                 position: 'top-end',
                                 icon: 'success',
-                                title: 'Deleted from cart succesfully.',
+                                title: 'Good job. Deleted from Cart.',
                                 showConfirmButton: false,
-                                timer: 1500
+                                timer: 2000
                             })
                         }
-                        setIsLoading2(false);
                     })
                     .catch(err => {
-                        setIsLoading2(false);
+                        console.log(err);
                     })
             }
         })
-
 
 
     }
@@ -83,14 +82,6 @@ const Cart = () => {
                             }
                         </div> : ""
             }
-
-            {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 py-10">
-                {
-                    isLoading2 ?
-                        // carts.map(cart => <CartCard  key={cart._id} product={cart}></CartCard>) : ""
-                }
-            </div> */}
-
         </div>
     );
 };

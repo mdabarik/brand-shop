@@ -53,9 +53,9 @@ const Login = () => {
                 Swal.fire({
                     position: 'top-end',
                     icon: 'success',
-                    title: 'Google Sign In Successfull.',
+                    title: 'Google Sign was succesfull.',
                     showConfirmButton: false,
-                    timer: 1500
+                    timer: 2000
                 })
             })
             .catch(err => {
