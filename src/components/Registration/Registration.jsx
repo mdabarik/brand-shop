@@ -10,7 +10,6 @@ import { updateProfile } from 'firebase/auth';
 const Registration = () => {
     const {
         user,
-        loading,
         registerUser,
         loginNormal,
         signInWithGoogle,
@@ -124,7 +123,7 @@ const Registration = () => {
                     <div className="form-control">
                         <label className="cursor-pointer label flex justify-start items-center space-y-2 gap-4">
                             <input required type="checkbox" className="checkbox checkbox-warning" />
-                            <span className="label-text text-sm underline">Accept terms and conditions</span>
+                            <span className="label-text text-sm underline dark:text-white">Accept terms and conditions</span>
                         </label>
                     </div>
                     <div className="form-control">
